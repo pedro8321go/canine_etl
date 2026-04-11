@@ -4,6 +4,9 @@
   "total_errors": 5,
   "total_warnings": 2,
   "affected_records": 7,
+  "valid_records": 23,
+  "valid_with_warnings_records": 2,
+  "invalid_records": 5,
   "anomaly_count_by_type": {
     "registro_duplicado": 2,
     "raza_no_válida": 1,
