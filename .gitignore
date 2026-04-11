@@ -206,3 +206,17 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+/.idea/.gitignore
+/.idea/awsToolkit.xml
+/.idea/canine_etl.iml
+/data/processed/competition.db
+/.idea/csv-editor.xml
+/.idea/data_source_mapping.xml
+/.idea/dataSources.xml
+/.idea/db-forest-config.xml
+/.idea/material_theme_project_new.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/sqldialects.xml
+/.idea/vcs.xml
