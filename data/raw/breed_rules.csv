@@ -1,0 +1,13 @@
+breed,min_weight_kg,max_weight_kg,min_age_months,max_age_months,size_group,allowed_categories
+Chihuahua,1.5,3.5,6,180,Toy,"Cachorro|Raza Toy|Raza Pequeña"
+Poodle,20,32,6,180,Mediano,"Cachorro|Raza Mediana|Trabajo Adulto"
+Pastor Alemán,22,40,6,180,Grande,"Cachorro|Raza Grande|Trabajo Adulto"
+Labrador Retriever,25,36,6,180,Grande,"Cachorro|Raza Grande|Trabajo Adulto"
+Beagle,9,14,6,180,Mediano,"Cachorro|Raza Mediana"
+Bulldog Francés,8,14,6,180,Pequeño,"Cachorro|Raza Pequeña"
+Golden Retriever,25,34,6,180,Grande,"Cachorro|Raza Grande|Trabajo Adulto"
+Husky Siberiano,16,27,6,180,Grande,"Cachorro|Raza Grande|Trabajo Adulto"
+Border Collie,12,20,6,180,Mediano,"Cachorro|Raza Mediana|Trabajo Adulto"
+Rottweiler,35,60,6,180,Grande,"Cachorro|Raza Grande|Trabajo Adulto"
+Gran Danés,45,90,6,180,Gigante,"Cachorro|Raza Grande|Trabajo Adulto"
+Cocker Spaniel,10,16,6,180,Mediano,"Cachorro|Raza Mediana"
