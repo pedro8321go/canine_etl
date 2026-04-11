@@ -30,7 +30,7 @@ class ValidatorService:
                         dog_id=record.dog_id,
                         dog_name=record.dog_name,
                         anomaly_type="registro_duplicado",
-                        severity="alta",
+                        issue_level="error",
                         message="Registro duplicado según nombre, raza, propietario, fecha e imagen.",
                     )
                 )
@@ -47,7 +47,7 @@ class ValidatorService:
                     dog_id=record.dog_id,
                     dog_name=record.dog_name,
                     anomaly_type="raza_no_válida",
-                    severity="alta",
+                    issue_level="error",
                     message=f"La raza '{record.breed}' no existe en el catálogo maestro.",
                 )
             ]
@@ -61,7 +61,7 @@ class ValidatorService:
                     dog_id=record.dog_id,
                     dog_name=record.dog_name,
                     anomaly_type="edad_fuera_rango",
-                    severity="media",
+                    issue_level="warning",
                     message=(
                         f"La edad {record.age_months} meses está fuera del rango permitido "
                         f"para la raza {breed_rule.breed} "
@@ -79,7 +79,7 @@ class ValidatorService:
                     dog_id=record.dog_id,
                     dog_name=record.dog_name,
                     anomaly_type="categoría_no_válida",
-                    severity="alta",
+                    issue_level="error",
                     message=(
                         f"La categoría '{record.competition_category}' no es válida para la raza "
                         f"{breed_rule.breed}. Categorías permitidas: {', '.join(breed_rule.allowed_categories)}."
@@ -96,7 +96,7 @@ class ValidatorService:
                     dog_id=record.dog_id,
                     dog_name=record.dog_name,
                     anomaly_type="estado_vacunación_no_válido",
-                    severity="medium",
+                    issue_level="warning",
                     message=(
                         f"El estado de vacunación '{record.vaccination_status}' no es válido. "
                         f"Valores permitidos: {', '.join(sorted(VALID_VACCINATION_STATUES))}."
@@ -113,7 +113,7 @@ class ValidatorService:
                     dog_id=record.dog_id,
                     dog_name=record.dog_name,
                     anomaly_type="sexo_no_válido",
-                    severity="bajo",
+                    issue_level="error",
                     message=f"El valor de sexo '{record.sex}' no es válido.",
                 )
             ]
@@ -127,7 +127,7 @@ class ValidatorService:
                     dog_id=record.dog_id,
                     dog_name=record.dog_name,
                     anomaly_type="sin_imagen",
-                    severity="media",
+                    issue_level="warning",
                     message="El registro no tiene ruta de imagen asociada.",
                 )
             ]
@@ -171,7 +171,7 @@ class ValidatorService:
                     dog_id=record.dog_id,
                     dog_name=record.dog_name,
                     anomaly_type="peso_fuera_de_rango",
-                    severity="high",
+                    issue_level="error",
                     message=(
                         f"El peso {record.weight_kg} kg está fuera del rango permitido "
                         f"para la raza {breed_rule.breed} "

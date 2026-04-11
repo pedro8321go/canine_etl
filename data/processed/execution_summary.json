@@ -1,0 +1,15 @@
+{
+  "total_records": 30,
+  "total_anomalies": 7,
+  "total_errors": 5,
+  "total_warnings": 2,
+  "affected_records": 7,
+  "anomaly_count_by_type": {
+    "registro_duplicado": 2,
+    "raza_no_válida": 1,
+    "peso_fuera_de_rango": 1,
+    "categoría_no_válida": 1,
+    "sin_imagen": 1,
+    "estado_vacunación_no_válido": 1
+  }
+}
