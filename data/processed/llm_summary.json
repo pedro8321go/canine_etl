@@ -1,18 +1,18 @@
 {
-  "executive_summary": "Se procesaron 30 registros y se detectaron 7 anomalías, lo que afecta a 7 registros. El porcentaje de registros válidos es del 76,67% y existen 3 registros inválidos. Los errores más críticos corresponden a registros duplicados, pesos fuera de rango y categorías no válidas. Estos errores suponen un impacto significativo en la calidad de los datos.",
+  "executive_summary": "La corrida ETL procesó un total de 31 registros, con 6 errores y 3 warning. Se detectaron algunas anomalías en los datos, como registros duplicados, pesos fuera de rango y categorías no válidas. Es importante realizar una revisión detallada de estos problemas y implementar soluciones para mejorar la calidad de los datos.",
   "main_issues": [
-    "Se detecto 1 registro con información de raza corregida por LLM.",
-    "Existen 2 registros duplicados.",
-    "El pesaje de 1 registro de Chihuahua es inválido (8,4 kg).",
-    "La categoría de raza 'Raza Toy' no es válida para el Gran Danés. Existen otras categorías que sí lo son.",
-    "Hay 1 registro sin imagen asociada."
+    "Se detectó un registro duplicado con el nombre 'Toby' por razones de nombre, raza, propietario, fecha e imagen.",
+    "Existen 6 errores en general.",
+    "Se registró un peso fuera de rango de 8.4 kg para la raza Chihuahua.",
+    "Existen registros con categorías no válidas.",
+    "Se detectó un error en la vacunación del perro."
   ],
   "recommendations": [
-    "Validar las categorías de raza para asegurar que estén correctas.",
-    "Revisar la información de pesaje para detectar posibles errores.",
-    "Comprobar la información de propiedad para detectar posibles registros duplicados.",
-    "Solicitar la información de imagen asociada al registro.",
-    "Corregir la información de raza para asegurar que esté actualizada y precisa."
+    "Corregir registros duplicados.",
+    "Eliminar registros con categorías no válidas.",
+    "Revisar pesos de las razas.",
+    "Validar la información de vacunación.",
+    "Solicitar la imagen de los registros que no la tienen."
   ],
-  "risk_assessment": "El riesgo operativo es elevado debido a la cantidad de errores críticos detectados, lo que podría afectar la toma de decisiones basada en los datos."
+  "risk_assessment": "El riesgo operativo es moderado debido a la presencia de errores y anomalías significativas en los datos, lo que podría afectar la precisión y confiabilidad de las conclusiones que se pueden obtener de la información procesada."
 }

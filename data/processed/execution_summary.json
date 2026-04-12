@@ -1,18 +1,20 @@
 {
-  "total_records": 30,
-  "total_anomalies": 7,
-  "total_errors": 4,
+  "total_records": 31,
+  "total_anomalies": 9,
+  "total_errors": 6,
   "total_warnings": 3,
-  "affected_records": 7,
-  "valid_records": 23,
+  "affected_records": 9,
+  "valid_records": 22,
   "valid_with_warnings_records": 3,
-  "invalid_records": 4,
+  "invalid_records": 6,
   "anomaly_count_by_type": {
     "raza_corregida_llm": 1,
     "registro_duplicado": 2,
     "peso_fuera_de_rango": 1,
     "categoría_no_válida": 1,
     "sin_imagen": 1,
-    "estado_vacunación_no_válido": 1
+    "estado_vacunación_no_válido": 1,
+    "fecha_inscripcion_incompatible_edad": 1,
+    "llm_semantic_breed_mismatch": 1
   }
 }

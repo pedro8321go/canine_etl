@@ -1,16 +1,16 @@
 Resumen narrativo de la ejecución ETL
 Pipeline ejecutado: dog_competition_etl.
-Inicio de ejecución: 2026-04-12T11:11:52.235475.
-Fin de ejecución: 2026-04-12T11:11:56.460451.
-Duración total: 4.2250 segundos.
-Registros procesados: 30.
-Registros válidos: 23.
+Inicio de ejecución: 2026-04-12T19:56:32.433911.
+Fin de ejecución: 2026-04-12T19:57:08.509545.
+Duración total: 36.0756 segundos.
+Registros procesados: 31.
+Registros válidos: 22.
 Registros válidos con advertencias: 3.
-Registros inválidos: 4.
-Total de anomalías detectadas: 7.
-Errores: 4.
+Registros inválidos: 6.
+Total de anomalías detectadas: 9.
+Errores: 6.
 Warnings: 3.
-Registros afectados por alguna incidencia: 7.
+Registros afectados por alguna incidencia: 9.
 Distribución por tipo de anomalía:
 - raza_corregida_llm: 1
 - registro_duplicado: 2
@@ -18,4 +18,6 @@ Distribución por tipo de anomalía:
 - categoría_no_válida: 1
 - sin_imagen: 1
 - estado_vacunación_no_válido: 1
+- fecha_inscripcion_incompatible_edad: 1
+- llm_semantic_breed_mismatch: 1
 Este texto está preparado para ser usado como contexto de entrada en una integración con un modelo de lenguaje.

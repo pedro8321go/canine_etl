@@ -6,3 +6,5 @@ dog_id,dog_name,anomaly_type,issue_level,message
 17,Mia,sin_imagen,warning,El registro no tiene ruta de imagen asociada.
 18,Leo,estado_vacunación_no_válido,warning,"El estado de vacunación 'Desconocido' no es válido. Valores permitidos: Completo, Incompleto, Pendiente."
 19,Toby,registro_duplicado,error,"Registro duplicado según nombre, raza, propietario, fecha e imagen."
+31,Bongo,fecha_inscripcion_incompatible_edad,error,La fecha de inscripción '2024-10-01' es anterior a la fecha mínima compatible con la edad del perro (14 meses).
+3,Rocky,llm_semantic_breed_mismatch,error,"Raza indicada en las notas de registro es Perro grande, pero la raza registrada es Chihuahua."
