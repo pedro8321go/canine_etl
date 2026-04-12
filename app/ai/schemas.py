@@ -57,3 +57,35 @@ LLM_BREED_CORRECTION_JSON_SCHEMA = {
         "required": ["corrections"],
     },
 }
+
+LLM_SEMANTIC_VALIDATION_JSON_SCHEMA = {
+    "name": "semantic_validation",
+    "schema": {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "properties": {
+                        "dog_id": {"type": "integer"},
+                        "has_issue": {"type": "boolean"},
+                        "issue_level": {"type": "string", "enum": ["warning", "error"]},
+                        "issue_type": {"type": "string"},
+                        "message": {"type": "string"},
+                    },
+                    "required": [
+                        "dog_id",
+                        "has_issue",
+                        "issue_level",
+                        "issue_type",
+                        "message",
+                    ],
+                },
+            }
+        },
+        "required": ["items"],
+    },
+}

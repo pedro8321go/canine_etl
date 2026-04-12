@@ -19,6 +19,32 @@ class LLMClient:
         self.model = os.getenv("CEREBRAS_MODEL", "llama3.1-8b")
         self.client = Cerebras(api_key=api_key)
 
+    @staticmethod
+    def _parse_json_output(text_output: str) -> dict[str, Any]:
+        cleaned = text_output.strip()
+
+        if cleaned.startswith("```"):
+            cleaned = cleaned.strip("`")
+            if cleaned.lower().startswith("json"):
+                cleaned = cleaned[4:].strip()
+
+        try:
+            parsed = json.loads(cleaned)
+            if isinstance(parsed, dict):
+                return parsed
+        except json.JSONDecodeError:
+            pass
+
+        start = cleaned.find("{")
+        end = cleaned.rfind("}")
+        if start != -1 and end != -1 and end > start:
+            candidate = cleaned[start : end + 1]
+            parsed = json.loads(candidate)
+            if isinstance(parsed, dict):
+                return parsed
+
+        raise ValueError("La respuesta del modelo no contiene un JSON objeto valido.")
+
     def generate_structured_json(
         self,
         prompt: str,
@@ -51,7 +77,7 @@ class LLMClient:
                 if not text_output:
                     raise RuntimeError("Cerebras no devolvio contenido en texto.")
 
-                return json.loads(text_output)
+                return self._parse_json_output(text_output)
 
             except cerebras.cloud.sdk.APIError as exc:
                 last_error = RuntimeError(f"APIError en Cerebras: {exc}")

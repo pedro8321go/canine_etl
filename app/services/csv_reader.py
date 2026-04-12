@@ -30,8 +30,12 @@ class CSVReaderService:
     def read_dogs_records(file_path: str) -> list[DogRecord]:
         df = pd.read_csv(file_path)
         records: list[DogRecord] = []
+        has_registration_notes = "registration_notes" in df.columns
         for _, row in df.iterrows():
             image_path = "" if pd.isna(row["image_path"]) else normalize_text(row["image_path"])
+            registration_notes = ""
+            if has_registration_notes and not pd.isna(row["registration_notes"]):
+                registration_notes = normalize_text(row["registration_notes"])
             record = DogRecord(
                 dog_id=int(row["dog_id"]),
                 dog_name=normalize_text(row["dog_name"]),
@@ -44,6 +48,7 @@ class CSVReaderService:
                 vaccination_status=normalize_text(row["vaccination_status"]),
                 registration_date=normalize_text(row["registration_date"]),
                 image_path=image_path,
+                registration_notes=registration_notes,
             )
             records.append(record)
 

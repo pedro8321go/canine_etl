@@ -1,31 +1,31 @@
-dog_id,dog_name,breed,sex,age_months,weight_kg,owner_name,competition_category,vaccination_status,registration_date,image_path
-1,Max,Pastor Alemán,M,24,34.5,Pedro Gómez,Trabajo Adulto,Completo,2026-04-01,imagenes/max_pastor_aleman.jpg
-2,Luna,Poodle,H,18,24.2,Ana Ruiz,Raza Mediana,Completo,2026-04-01,imagenes/luna_poodle.jpg
-3,Rocky,Chihuahua,M,36,2.8,Carlos Díaz,Raza Toy,Completo,2026-04-02,imagenes/rocky_chihuahua.jpg
-4,Bella,Golden Retriever,H,20,28.7,María López,Raza Grande,Completo,2026-04-02,imagenes/bella_golden.jpg
-5,Toby,Beagle,M,16,11.4,Jorge Pérez,Raza Mediana,Completo,2026-04-03,imagenes/toby_beagle.jpg
-6,Nala,Bulldog Francés,H,14,10.1,Lucía Herrera,Raza Pequeña,Completo,2026-04-03,imagenes/nala_bulldog_frances.jpg
-7,Simba,Labrador Retriever,M,22,31.0,Raúl Martínez,Trabajo Adulto,Completo,2026-04-03,imagenes/simba_labrador.jpg
-8,Molly,Border Collie,H,19,16.3,Elena Castro,Trabajo Adulto,Completo,2026-04-04,imagenes/molly_border_collie.jpg
-9,Thor,Rottweiler,M,30,48.5,Daniel Suárez,Raza Grande,Completo,2026-04-04,imagenes/thor_rottweiler.jpg
-10,Daisy,Cocker Spaniel,H,26,12.0,Sofía Mendoza,Raza Mediana,Completo,2026-04-04,imagenes/daisy_cocker.jpg
-11,Bruno,Husky Siberiano,M,28,23.4,Miguel Torres,Trabajo Adulto,Completo,2026-04-05,imagenes/bruno_husky.jpg
-12,Kira,Gran Danés,H,32,58.0,Patricia León,Raza Grande,Completo,2026-04-05,imagenes/kira_gran_danes.jpg
-13,Zeus,Pastor Alemán,M,12,27.0,Andrés Navarro,Cachorro,Completo,2026-04-05,imagenes/zeus_pastor_aleman.jpg
-14,Lola,Pudel,H,15,22.5,Natalia Vega,Raza Mediana,Completo,2026-04-06,imagenes/lola_poodle.jpg
-15,Coco,Chihuahua,M,20,8.4,Ernesto Gil,Raza Toy,Completo,2026-04-06,imagenes/coco_chihuahua.jpg
-16,Apolo,Gran Danés,M,25,62.0,Verónica Ríos,Raza Toy,Completo,2026-04-06,imagenes/apolo_gran_danes.jpg
-17,Mia,Beagle,H,17,10.2,Roberto Fuentes,Raza Mediana,Completo,2026-04-07,
-18,Leo,Border Collie,M,21,17.1,Claudia Peña,Trabajo Adulto,Desconocido,2026-04-07,imagenes/leo_border_collie.jpg
-19,Toby,Beagle,M,16,11.4,Jorge Pérez,Raza Mediana,Completo,2026-04-03,imagenes/toby_beagle.jpg
-20,Nina,Bulldog Francés,H,10,9.0,Isabel Romero,Cachorro,Completo,2026-04-07,imagenes/nina_bulldog_frances.jpg
-21,Rex,Labrador Retriever,M,26,33.2,Tomás Cabrera,Raza Grande,Completo,2026-04-08,imagenes/rex_labrador.jpg
-22,Lucy,Cocker Spaniel,H,11,11.6,Paula Ortega,Cachorro,Completo,2026-04-08,imagenes/lucy_cocker.jpg
-23,Duke,Rottweiler,M,14,39.0,Samuel Prieto,Cachorro,Completo,2026-04-08,imagenes/duke_rottweiler.jpg
-24,Canela,Golden Retriever,H,27,29.5,Beatriz Molina,Trabajo Adulto,Completo,2026-04-08,imagenes/canela_golden.jpg
-25,Odin,Husky Siberiano,M,18,24.0,Fernando Acosta,Raza Grande,Completo,2026-04-09,imagenes/odin_husky.jpg
-26,Pepa,Chihuahua,H,13,2.2,Gabriela Santos,Cachorro,Completo,2026-04-09,imagenes/pepa_chihuahua.jpg
-27,Bart,Beagle,M,40,13.1,Iván Salcedo,Raza Mediana,Completo,2026-04-09,imagenes/bart_beagle.jpg
-28,Sasha,Border Collie,H,22,18.4,Andrea Ponce,Raza Mediana,Completo,2026-04-10,imagenes/sasha_border_collie.jpg
-29,Noa,Poodle,H,30,25.1,Valeria Campos,Trabajo Adulto,Completo,2026-04-10,imagenes/noa_poodle.jpg
-30,Kenzo,Pastor Alemán,M,29,36.8,Héctor Vidal,Raza Grande,Completo,2026-04-10,imagenes/kenzo_pastor_aleman.jpg
+dog_id,dog_name,breed,sex,age_months,weight_kg,owner_name,competition_category,vaccination_status,registration_date,image_path,registration_notes
+1,Max,Pastor Alemán,M,24,34.5,Pedro Gómez,Trabajo Adulto,Completo,2026-04-01,imagenes/max_pastor_aleman.jpg,"Registro reporta raza Pastor Alemán, peso 34.5 kg e inscripcion en Trabajo Adulto."
+2,Luna,Poodle,H,18,24.2,Ana Ruiz,Raza Mediana,Completo,2026-04-01,imagenes/luna_poodle.jpg,"Registro reporta raza Poodle, peso 24.2 kg e inscripcion en Raza Mediana."
+3,Rocky,Chihuahua,M,36,2.8,Carlos Díaz,Raza Toy,Completo,2026-04-02,imagenes/rocky_chihuahua.jpg,"Perro grande de 40 kg, apto para Trabajo Adulto. No corresponde a categoria toy."
+4,Bella,Golden Retriever,H,20,28.7,María López,Raza Grande,Completo,2026-04-02,imagenes/bella_golden.jpg,"Registro reporta raza Golden Retriever, peso 28.7 kg e inscripcion en Raza Grande."
+5,Toby,Beagle,M,16,11.4,Jorge Pérez,Raza Mediana,Completo,2026-04-03,imagenes/toby_beagle.jpg,"Registro reporta raza Beagle, peso 11.4 kg e inscripcion en Raza Mediana."
+6,Nala,Bulldog Francés,H,14,10.1,Lucía Herrera,Raza Pequeña,Completo,2026-04-03,imagenes/nala_bulldog_frances.jpg,"Registro reporta raza Bulldog Francés, peso 10.1 kg e inscripcion en Raza Pequeña."
+7,Simba,Labrador Retriever,M,22,31.0,Raúl Martínez,Trabajo Adulto,Completo,2026-04-03,imagenes/simba_labrador.jpg,"Registro reporta raza Labrador Retriever, peso 31.0 kg e inscripcion en Trabajo Adulto."
+8,Molly,Border Collie,H,19,16.3,Elena Castro,Trabajo Adulto,Completo,2026-04-04,imagenes/molly_border_collie.jpg,"Registro reporta raza Border Collie, peso 16.3 kg e inscripcion en Trabajo Adulto."
+9,Thor,Rottweiler,M,30,48.5,Daniel Suárez,Raza Grande,Completo,2026-04-04,imagenes/thor_rottweiler.jpg,"Registro reporta raza Rottweiler, peso 48.5 kg e inscripcion en Raza Grande."
+10,Daisy,Cocker Spaniel,H,26,12.0,Sofía Mendoza,Raza Mediana,Completo,2026-04-04,imagenes/daisy_cocker.jpg,"Registro reporta raza Cocker Spaniel, peso 12.0 kg e inscripcion en Raza Mediana."
+11,Bruno,Husky Siberiano,M,28,23.4,Miguel Torres,Trabajo Adulto,Completo,2026-04-05,imagenes/bruno_husky.jpg,"Registro reporta raza Husky Siberiano, peso 23.4 kg e inscripcion en Trabajo Adulto."
+12,Kira,Gran Danés,H,32,58.0,Patricia León,Raza Grande,Completo,2026-04-05,imagenes/kira_gran_danes.jpg,"Registro reporta raza Gran Danés, peso 58.0 kg e inscripcion en Raza Grande."
+13,Zeus,Pastor Alemán,M,12,27.0,Andrés Navarro,Cachorro,Completo,2026-04-05,imagenes/zeus_pastor_aleman.jpg,"Registro reporta raza Pastor Alemán, peso 27.0 kg e inscripcion en Cachorro."
+14,Lola,Pudel,H,15,22.5,Natalia Vega,Raza Mediana,Completo,2026-04-06,imagenes/lola_poodle.jpg,"Registro reporta raza Pudel, peso 22.5 kg e inscripcion en Raza Mediana."
+15,Coco,Chihuahua,M,20,8.4,Ernesto Gil,Raza Toy,Completo,2026-04-06,imagenes/coco_chihuahua.jpg,"Registro reporta raza Chihuahua, peso 8.4 kg e inscripcion en Raza Toy."
+16,Apolo,Gran Danés,M,25,62.0,Verónica Ríos,Raza Toy,Completo,2026-04-06,imagenes/apolo_gran_danes.jpg,"Registro reporta raza Gran Danés, peso 62.0 kg e inscripcion en Raza Toy."
+17,Mia,Beagle,H,17,10.2,Roberto Fuentes,Raza Mediana,Completo,2026-04-07,,"Registro reporta raza Beagle, peso 10.2 kg e inscripcion en Raza Mediana."
+18,Leo,Border Collie,M,21,17.1,Claudia Peña,Trabajo Adulto,Desconocido,2026-04-07,imagenes/leo_border_collie.jpg,"Registro reporta raza Border Collie, peso 17.1 kg e inscripcion en Trabajo Adulto."
+19,Toby,Beagle,M,16,11.4,Jorge Pérez,Raza Mediana,Completo,2026-04-03,imagenes/toby_beagle.jpg,"Registro reporta raza Beagle, peso 11.4 kg e inscripcion en Raza Mediana."
+20,Nina,Bulldog Francés,H,10,9.0,Isabel Romero,Cachorro,Completo,2026-04-07,imagenes/nina_bulldog_frances.jpg,"Registro reporta raza Bulldog Francés, peso 9.0 kg e inscripcion en Cachorro."
+21,Rex,Labrador Retriever,M,26,33.2,Tomás Cabrera,Raza Grande,Completo,2026-04-08,imagenes/rex_labrador.jpg,"Registro reporta raza Labrador Retriever, peso 33.2 kg e inscripcion en Raza Grande."
+22,Lucy,Cocker Spaniel,H,11,11.6,Paula Ortega,Cachorro,Completo,2026-04-08,imagenes/lucy_cocker.jpg,"Registro reporta raza Cocker Spaniel, peso 11.6 kg e inscripcion en Cachorro."
+23,Duke,Rottweiler,M,14,39.0,Samuel Prieto,Cachorro,Completo,2026-04-08,imagenes/duke_rottweiler.jpg,"Registro reporta raza Rottweiler, peso 39.0 kg e inscripcion en Cachorro."
+24,Canela,Golden Retriever,H,27,29.5,Beatriz Molina,Trabajo Adulto,Completo,2026-04-08,imagenes/canela_golden.jpg,"Registro reporta raza Golden Retriever, peso 29.5 kg e inscripcion en Trabajo Adulto."
+25,Odin,Husky Siberiano,M,18,24.0,Fernando Acosta,Raza Grande,Completo,2026-04-09,imagenes/odin_husky.jpg,"Registro reporta raza Husky Siberiano, peso 24.0 kg e inscripcion en Raza Grande."
+26,Pepa,Chihuahua,H,13,2.2,Gabriela Santos,Cachorro,Completo,2026-04-09,imagenes/pepa_chihuahua.jpg,"Registro reporta raza Chihuahua, peso 2.2 kg e inscripcion en Cachorro."
+27,Bart,Beagle,M,40,13.1,Iván Salcedo,Raza Mediana,Completo,2026-04-09,imagenes/bart_beagle.jpg,"Registro reporta raza Beagle, peso 13.1 kg e inscripcion en Raza Mediana."
+28,Sasha,Border Collie,H,22,18.4,Andrea Ponce,Raza Mediana,Completo,2026-04-10,imagenes/sasha_border_collie.jpg,"Registro reporta raza Border Collie, peso 18.4 kg e inscripcion en Raza Mediana."
+29,Noa,Poodle,H,30,25.1,Valeria Campos,Trabajo Adulto,Completo,2026-04-10,imagenes/noa_poodle.jpg,"Registro reporta raza Poodle, peso 25.1 kg e inscripcion en Trabajo Adulto."
+30,Kenzo,Pastor Alemán,M,29,36.8,Héctor Vidal,Raza Grande,Completo,2026-04-10,imagenes/kenzo_pastor_aleman.jpg,"Registro reporta raza Pastor Alemán, peso 36.8 kg e inscripcion en Raza Grande."

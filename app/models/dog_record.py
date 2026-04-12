@@ -13,3 +13,4 @@ class DogRecord:
     vaccination_status: str
     registration_date: str
     image_path: str
+    registration_notes: str

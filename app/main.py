@@ -3,6 +3,7 @@ from time import perf_counter
 
 from app.ai.breed_correction_llm_service import BreedCorrectionLLMService
 from app.ai.narrative_llm_service import NarrativeLLMService
+from app.ai.semantic_validation_llm_service import SemanticValidationLLMService
 from app.core.config import (
     ANOMALIES_REPORT_FILE,
     BREED_RULES_FILE,
@@ -45,6 +46,17 @@ def main() -> None:
     logger.info("Validando registros...")
     validator = ValidatorService()
     anomalies = correction_anomalies + validator.validate_records(dog_records, breed_rules)
+
+    semantic_anomalies = []
+    logger.info("Ejecutando validacion semantica asistida por LLM...")
+    try:
+        semantic_service = SemanticValidationLLMService()
+        semantic_anomalies = semantic_service.validate_records(dog_records, breed_rules)
+        logger.info(f"Inconsistencias semanticas detectadas por LLM: {len(semantic_anomalies)}")
+    except Exception as exc:
+        logger.warning(f"No se pudo ejecutar la validacion semantica por LLM: {exc}")
+
+    anomalies.extend(semantic_anomalies)
 
     logger.info("Calculando estado final por registro...")
     record_results = StatusService.build_record_results(dog_records, anomalies)
