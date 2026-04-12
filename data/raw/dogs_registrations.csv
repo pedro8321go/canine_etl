@@ -29,3 +29,4 @@ dog_id,dog_name,breed,sex,age_months,weight_kg,owner_name,competition_category,v
 28,Sasha,Border Collie,H,22,18.4,Andrea Ponce,Raza Mediana,Completo,2026-04-10,imagenes/sasha_border_collie.jpg,"Registro reporta raza Border Collie, peso 18.4 kg e inscripcion en Raza Mediana."
 29,Noa,Poodle,H,30,25.1,Valeria Campos,Trabajo Adulto,Completo,2026-04-10,imagenes/noa_poodle.jpg,"Registro reporta raza Poodle, peso 25.1 kg e inscripcion en Trabajo Adulto."
 30,Kenzo,Pastor Alemán,M,29,36.8,Héctor Vidal,Raza Grande,Completo,2026-04-10,imagenes/kenzo_pastor_aleman.jpg,"Registro reporta raza Pastor Alemán, peso 36.8 kg e inscripcion en Raza Grande."
+31,Bongo,Beagle,M,14,11.2,Mario Perez,Cachorro,Completo,2024-10-01,imagenes/bongo_beagle.jpg,"Registro reporta raza Beagle, peso 11.2 kg e inscripcion en Cachorro."
