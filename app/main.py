@@ -1,6 +1,7 @@
 ﻿from datetime import datetime
 from time import perf_counter
 
+from app.ai.breed_correction_llm_service import BreedCorrectionLLMService
 from app.ai.narrative_llm_service import NarrativeLLMService
 from app.core.config import (
     ANOMALIES_REPORT_FILE,
@@ -32,9 +33,18 @@ def main() -> None:
     logger.info("Leyendo registros de perros...")
     dog_records = CSVReaderService.read_dogs_records(DOG_REGISTRATIONS_FILE)
 
+    correction_anomalies = []
+    logger.info("Intentando correccion de razas invalidas con LLM...")
+    try:
+        breed_correction_service = BreedCorrectionLLMService()
+        correction_anomalies = breed_correction_service.correct_invalid_breeds(dog_records, breed_rules)
+        logger.info(f"Correcciones de raza aplicadas por LLM: {len(correction_anomalies)}")
+    except Exception as exc:
+        logger.warning(f"No se pudo ejecutar la correccion de razas por LLM: {exc}")
+
     logger.info("Validando registros...")
     validator = ValidatorService()
-    anomalies = validator.validate_records(dog_records, breed_rules)
+    anomalies = correction_anomalies + validator.validate_records(dog_records, breed_rules)
 
     logger.info("Calculando estado final por registro...")
     record_results = StatusService.build_record_results(dog_records, anomalies)

@@ -1,6 +1,6 @@
 dog_id,dog_name,anomaly_type,issue_level,message
+14,Lola,raza_corregida_llm,warning,Raza corregida por LLM de 'Pudel' a 'Poodle' usando catalogo maestro.
 5,Toby,registro_duplicado,error,"Registro duplicado según nombre, raza, propietario, fecha e imagen."
-14,Lola,raza_no_válida,error,La raza 'Pudel' no existe en el catálogo maestro.
 15,Coco,peso_fuera_de_rango,error,El peso 8.4 kg está fuera del rango permitido para la raza Chihuahua (1.5 - 3.5 kg).
 16,Apolo,categoría_no_válida,error,"La categoría 'Raza Toy' no es válida para la raza Gran Danés. Categorías permitidas: Cachorro, Raza Grande, Trabajo Adulto."
 17,Mia,sin_imagen,warning,El registro no tiene ruta de imagen asociada.

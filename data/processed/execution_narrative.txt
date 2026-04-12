@@ -1,19 +1,19 @@
 Resumen narrativo de la ejecución ETL
 Pipeline ejecutado: dog_competition_etl.
-Inicio de ejecución: 2026-04-12T10:03:58.838661.
-Fin de ejecución: 2026-04-12T10:03:58.845310.
-Duración total: 0.0066 segundos.
+Inicio de ejecución: 2026-04-12T11:11:52.235475.
+Fin de ejecución: 2026-04-12T11:11:56.460451.
+Duración total: 4.2250 segundos.
 Registros procesados: 30.
 Registros válidos: 23.
-Registros válidos con advertencias: 2.
-Registros inválidos: 5.
+Registros válidos con advertencias: 3.
+Registros inválidos: 4.
 Total de anomalías detectadas: 7.
-Errores: 5.
-Warnings: 2.
+Errores: 4.
+Warnings: 3.
 Registros afectados por alguna incidencia: 7.
 Distribución por tipo de anomalía:
+- raza_corregida_llm: 1
 - registro_duplicado: 2
-- raza_no_válida: 1
 - peso_fuera_de_rango: 1
 - categoría_no_válida: 1
 - sin_imagen: 1

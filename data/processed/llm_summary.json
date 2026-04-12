@@ -1,13 +1,18 @@
 {
-  "executive_summary": "Se encontraron 30 registros con 7 anomalías y 2 advertencias. Se repitió un registro según nombre, raza, propietario y fecha. Se encontró un registro sin imagen y otra con estado de vacunación no válido. Las razas 'Pudel' y 'Raza Toy' no son válidas.",
+  "executive_summary": "Se procesaron 30 registros y se detectaron 7 anomalías, lo que afecta a 7 registros. El porcentaje de registros válidos es del 76,67% y existen 3 registros inválidos. Los errores más críticos corresponden a registros duplicados, pesos fuera de rango y categorías no válidas. Estos errores suponen un impacto significativo en la calidad de los datos.",
   "main_issues": [
-    "Registro duplicado",
-    "Raza no válida",
-    "Peso fuera de rango"
+    "Se detecto 1 registro con información de raza corregida por LLM.",
+    "Existen 2 registros duplicados.",
+    "El pesaje de 1 registro de Chihuahua es inválido (8,4 kg).",
+    "La categoría de raza 'Raza Toy' no es válida para el Gran Danés. Existen otras categorías que sí lo son.",
+    "Hay 1 registro sin imagen asociada."
   ],
   "recommendations": [
-    "Verificar la base de datos por duplicados",
-    "Revisar la tabla de raza y categorías"
+    "Validar las categorías de raza para asegurar que estén correctas.",
+    "Revisar la información de pesaje para detectar posibles errores.",
+    "Comprobar la información de propiedad para detectar posibles registros duplicados.",
+    "Solicitar la información de imagen asociada al registro.",
+    "Corregir la información de raza para asegurar que esté actualizada y precisa."
   ],
-  "risk_assessment": "Se puede generar pérdida de confiabilidad en los informes si se no se soluciona el problema de los registros duplicados."
+  "risk_assessment": "El riesgo operativo es elevado debido a la cantidad de errores críticos detectados, lo que podría afectar la toma de decisiones basada en los datos."
 }
