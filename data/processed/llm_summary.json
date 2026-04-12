@@ -1,0 +1,13 @@
+{
+  "executive_summary": "Se encontraron 30 registros con 7 anomalías y 2 advertencias. Se repitió un registro según nombre, raza, propietario y fecha. Se encontró un registro sin imagen y otra con estado de vacunación no válido. Las razas 'Pudel' y 'Raza Toy' no son válidas.",
+  "main_issues": [
+    "Registro duplicado",
+    "Raza no válida",
+    "Peso fuera de rango"
+  ],
+  "recommendations": [
+    "Verificar la base de datos por duplicados",
+    "Revisar la tabla de raza y categorías"
+  ],
+  "risk_assessment": "Se puede generar pérdida de confiabilidad en los informes si se no se soluciona el problema de los registros duplicados."
+}

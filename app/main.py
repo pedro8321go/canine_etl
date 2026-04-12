@@ -1,12 +1,13 @@
 ﻿from datetime import datetime
 from time import perf_counter
 
+from app.ai.narrative_llm_service import NarrativeLLMService
 from app.core.config import (
     ANOMALIES_REPORT_FILE,
     BREED_RULES_FILE,
     DOG_REGISTRATIONS_FILE,
     EXECUTION_SUMMARY_FILE,
-    SQLITE_DB_FILE, PIPELINE_NAME, EXECUTION_NARRATIVE_FILE,
+    SQLITE_DB_FILE, PIPELINE_NAME, EXECUTION_NARRATIVE_FILE, LLM_SUMMARY_FILE,
 )
 from app.core.logger import get_logger
 from app.models.etl_execution import ETLExecution
@@ -52,12 +53,20 @@ def main() -> None:
         processed_records=len(dog_records),
     )
 
+    logger.info("Generando resumen narrativo base...")
+    narrative_text = NarrativeService.build_narrative(summary, execution)
+    NarrativeService.save_narrative(narrative_text, EXECUTION_NARRATIVE_FILE)
+                                                   
+    logger.info("Generando resumen con LLM...")
+    llm_service = NarrativeLLMService()
+    llm_summary = llm_service.generate_narrative_summary(summary, anomalies)
+
     logger.info("Generando reporte de salida...")
     ReportGeneratorService.generate_anomalies_csv(anomalies, ANOMALIES_REPORT_FILE)
     ReportGeneratorService.generate_execution_summary(summary, EXECUTION_SUMMARY_FILE)
+    ReportGeneratorService.generate_llm_summary_json(llm_summary, LLM_SUMMARY_FILE)
 
-    narrative_text = NarrativeService.build_narrative(summary, execution)
-    NarrativeService.save_narrative(narrative_text, EXECUTION_NARRATIVE_FILE)
+
 
     logger.info("Cargando resultados en BD...")
     sqlite_loader = SQLiteLoaderService(SQLITE_DB_FILE)
@@ -81,6 +90,7 @@ def main() -> None:
     logger.info(f"Reporte CSV: {ANOMALIES_REPORT_FILE}")
     logger.info(f"Resumen JSON: {EXECUTION_SUMMARY_FILE}")
     logger.info(f"Resumen narrativo: {EXECUTION_NARRATIVE_FILE}")
+    logger.info(f"Resumen LLM: {LLM_SUMMARY_FILE}")
     logger.info(f"Base SQLite: {SQLITE_DB_FILE}")
 
 
