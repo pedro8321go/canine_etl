@@ -52,6 +52,11 @@ class LLMClient:
         max_output_tokens: int = 600,
         max_retries: int = 3,
     ) -> dict[str, Any]:
+        if "name" not in json_schema or "schema" not in json_schema:
+            raise ValueError("json_schema debe contener 'name' y 'schema'.")
+        if max_retries < 1:
+            raise ValueError("max_retries debe ser >= 1.")
+
         last_error: Exception | None = None
 
         for attempt in range(max_retries):
@@ -73,6 +78,8 @@ class LLMClient:
                     },
                 )
 
+                if not completion.choices:
+                    raise RuntimeError("Cerebras devolvio una respuesta sin opciones.")
                 text_output = completion.choices[0].message.content
                 if not text_output:
                     raise RuntimeError("Cerebras no devolvio contenido en texto.")

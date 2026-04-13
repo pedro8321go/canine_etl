@@ -33,10 +33,15 @@ class BreedCorrectionLLMService:
             json_schema=LLM_BREED_CORRECTION_JSON_SCHEMA,
             max_output_tokens=350,
         )
+        corrections = response.get("corrections", [])
+        if not isinstance(corrections, list):
+            raise ValueError("Respuesta invalida de LLM en correccion de razas: 'corrections' no es lista.")
 
         allowed_by_lower = {breed.lower(): breed for breed in allowed_breeds}
         replacement_by_source_lower: dict[str, str] = {}
-        for item in response.get("corrections", []):
+        for item in corrections:
+            if not isinstance(item, dict):
+                continue
             source = str(item.get("source_breed", "")).strip()
             suggested = str(item.get("suggested_breed", "")).strip()
             should_replace = bool(item.get("should_replace", False))
