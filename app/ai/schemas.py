@@ -1,0 +1,91 @@
+LLM_NARRATIVE_JSON_SCHEMA = {
+    "name": "etl_narrative_summary",
+    "schema": {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "executive_summary": {
+                "type": "string"
+            },
+            "main_issues": {
+                "type": "array",
+                "items": {"type": "string"}
+            },
+            "recommendations": {
+                "type": "array",
+                "items": {"type": "string"}
+            },
+            "risk_assessment": {
+                "type": "string"
+            }
+        },
+        "required": [
+            "executive_summary",
+            "main_issues",
+            "recommendations",
+            "risk_assessment"
+        ]
+    }
+}
+
+LLM_BREED_CORRECTION_JSON_SCHEMA = {
+    "name": "breed_corrections",
+    "schema": {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "corrections": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "properties": {
+                        "source_breed": {"type": "string"},
+                        "suggested_breed": {"type": "string"},
+                        "should_replace": {"type": "boolean"},
+                        "reason": {"type": "string"},
+                    },
+                    "required": [
+                        "source_breed",
+                        "suggested_breed",
+                        "should_replace",
+                        "reason",
+                    ],
+                },
+            }
+        },
+        "required": ["corrections"],
+    },
+}
+
+LLM_SEMANTIC_VALIDATION_JSON_SCHEMA = {
+    "name": "semantic_validation",
+    "schema": {
+        "type": "object",
+        "additionalProperties": False,
+        "properties": {
+            "items": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "properties": {
+                        "dog_id": {"type": "integer"},
+                        "has_issue": {"type": "boolean"},
+                        "issue_level": {"type": "string", "enum": ["warning", "error"]},
+                        "issue_type": {"type": "string"},
+                        "message": {"type": "string"},
+                    },
+                    "required": [
+                        "dog_id",
+                        "has_issue",
+                        "issue_level",
+                        "issue_type",
+                        "message",
+                    ],
+                },
+            }
+        },
+        "required": ["items"],
+    },
+}

@@ -1,0 +1,18 @@
+{
+  "executive_summary": "La corrida ETL procesó un total de 31 registros, con 6 errores y 3 warning. Se detectaron algunas anomalías en los datos, como registros duplicados, pesos fuera de rango y categorías no válidas. Es importante realizar una revisión detallada de estos problemas y implementar soluciones para mejorar la calidad de los datos.",
+  "main_issues": [
+    "Se detectó un registro duplicado con el nombre 'Toby' por razones de nombre, raza, propietario, fecha e imagen.",
+    "Existen 6 errores en general.",
+    "Se registró un peso fuera de rango de 8.4 kg para la raza Chihuahua.",
+    "Existen registros con categorías no válidas.",
+    "Se detectó un error en la vacunación del perro."
+  ],
+  "recommendations": [
+    "Corregir registros duplicados.",
+    "Eliminar registros con categorías no válidas.",
+    "Revisar pesos de las razas.",
+    "Validar la información de vacunación.",
+    "Solicitar la imagen de los registros que no la tienen."
+  ],
+  "risk_assessment": "El riesgo operativo es moderado debido a la presencia de errores y anomalías significativas en los datos, lo que podría afectar la precisión y confiabilidad de las conclusiones que se pueden obtener de la información procesada."
+}
