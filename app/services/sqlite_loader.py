@@ -31,9 +31,11 @@ class SQLiteLoaderService:
                     vaccination_status TEXT NOT NULL,
                     registration_date TEXT NOT NULL,
                     image_path TEXT,
+                    registration_notes TEXT NOT NULL DEFAULT '',
                     record_status TEXT NOT NULL
                 )
             """)
+            self._ensure_dog_records_columns(cursor)
 
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS anomalies (
@@ -97,8 +99,8 @@ class SQLiteLoaderService:
                 INSERT INTO dog_records (
                     dog_id, dog_name, breed, sex, age_months, weight_kg,
                     owner_name, competition_category, vaccination_status,
-                    registration_date, image_path, record_status
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    registration_date, image_path, registration_notes, record_status
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, [
                 (
                     record.dog_id,
@@ -112,6 +114,7 @@ class SQLiteLoaderService:
                     record.vaccination_status,
                     record.registration_date,
                     record.image_path,
+                    record.registration_notes,
                     status_by_id.get(record.dog_id, "invalid"),
                 )
                 for record in records
@@ -182,3 +185,12 @@ class SQLiteLoaderService:
             ))
 
             conn.commit()
+
+    @staticmethod
+    def _ensure_dog_records_columns(cursor: sqlite3.Cursor) -> None:
+        cursor.execute("PRAGMA table_info(dog_records)")
+        existing_columns = {row[1] for row in cursor.fetchall()}
+        if "registration_notes" not in existing_columns:
+            cursor.execute(
+                "ALTER TABLE dog_records ADD COLUMN registration_notes TEXT NOT NULL DEFAULT ''"
+            )

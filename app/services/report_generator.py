@@ -28,3 +28,10 @@ class ReportGeneratorService:
         Path(output_path).parent.mkdir(parents=True, exist_ok=True)
         with open(output_path, 'w', newline='', encoding="utf-8") as file:
             json.dump(summary.to_dict(), file, ensure_ascii=False, indent=2)
+
+    @staticmethod
+    def generate_llm_summary_json(data: dict, output_path: str) -> None:
+        Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+
+        with open(output_path, mode="w", encoding="utf-8") as file:
+            json.dump(data, file, ensure_ascii=False, indent=2)

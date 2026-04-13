@@ -1,4 +1,5 @@
 from collections import Counter
+from datetime import date, datetime
 from app.core.config import VALID_SEX_VALUES, VALID_VACCINATION_STATUES
 from app.models.anomaly import Anomaly
 from app.models.breed_rule import BreedRule
@@ -17,6 +18,7 @@ class ValidatorService:
             anomalies.extend(self._validate_sex(record))
             anomalies.extend(self._validate_vaccination_status(record))
             anomalies.extend(self._validate_image_path(record))
+            anomalies.extend(self._validate_registration_date_vs_age(record))
 
             breed_rule = breed_rules.get(record.breed.lower())
             if breed_rule:
@@ -180,3 +182,70 @@ class ValidatorService:
                 )
             ]
         return []
+
+    @staticmethod
+    def _validate_registration_date_vs_age(record: DogRecord) -> list[Anomaly]:
+        try:
+            registration_date = datetime.strptime(record.registration_date, "%Y-%m-%d").date()
+        except ValueError:
+            return [
+                Anomaly(
+                    dog_id=record.dog_id,
+                    dog_name=record.dog_name,
+                    anomaly_type="fecha_inscripcion_formato_invalido",
+                    issue_level="error",
+                    message=(
+                        f"La fecha de inscripción '{record.registration_date}' no tiene formato YYYY-MM-DD."
+                    ),
+                )
+            ]
+
+        today = date.today()
+        if registration_date > today:
+            return [
+                Anomaly(
+                    dog_id=record.dog_id,
+                    dog_name=record.dog_name,
+                    anomaly_type="fecha_inscripcion_futura",
+                    issue_level="error",
+                    message=(
+                        f"La fecha de inscripción '{record.registration_date}' no puede ser posterior a hoy."
+                    ),
+                )
+            ]
+
+        earliest_possible_registration = ValidatorService._subtract_months(today, record.age_months)
+        if registration_date < earliest_possible_registration:
+            return [
+                Anomaly(
+                    dog_id=record.dog_id,
+                    dog_name=record.dog_name,
+                    anomaly_type="fecha_inscripcion_incompatible_edad",
+                    issue_level="error",
+                    message=(
+                        f"La fecha de inscripción '{record.registration_date}' es anterior a la fecha mínima "
+                        f"compatible con la edad del perro ({record.age_months} meses)."
+                    ),
+                )
+            ]
+
+        return []
+
+    @staticmethod
+    def _subtract_months(reference_date: date, months: int) -> date:
+        year = reference_date.year
+        month = reference_date.month - months
+        while month <= 0:
+            month += 12
+            year -= 1
+
+        day = min(reference_date.day, ValidatorService._days_in_month(year, month))
+        return date(year, month, day)
+
+    @staticmethod
+    def _days_in_month(year: int, month: int) -> int:
+        if month == 12:
+            next_month = date(year + 1, 1, 1)
+        else:
+            next_month = date(year, month + 1, 1)
+        return (next_month - date(year, month, 1)).days

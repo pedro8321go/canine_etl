@@ -13,6 +13,7 @@ ANOMALIES_REPORT_FILE = PROCESSED_DATA_DIR / "anomalies_report.csv"
 EXECUTION_SUMMARY_FILE = PROCESSED_DATA_DIR / "execution_summary.json"
 EXECUTION_NARRATIVE_FILE = PROCESSED_DATA_DIR / "execution_narrative.txt"
 SQLITE_DB_FILE = PROCESSED_DATA_DIR / "competition.db"
+LLM_SUMMARY_FILE = PROCESSED_DATA_DIR / "llm_summary.json"
 
 VALID_VACCINATION_STATUES = {"Completo", "Incompleto", "Pendiente"}
 VALID_SEX_VALUES = {"M", "H"}

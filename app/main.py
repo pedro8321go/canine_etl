@@ -1,12 +1,15 @@
 ﻿from datetime import datetime
 from time import perf_counter
 
+from app.ai.breed_correction_llm_service import BreedCorrectionLLMService
+from app.ai.narrative_llm_service import NarrativeLLMService
+from app.ai.semantic_validation_llm_service import SemanticValidationLLMService
 from app.core.config import (
     ANOMALIES_REPORT_FILE,
     BREED_RULES_FILE,
     DOG_REGISTRATIONS_FILE,
     EXECUTION_SUMMARY_FILE,
-    SQLITE_DB_FILE, PIPELINE_NAME, EXECUTION_NARRATIVE_FILE,
+    SQLITE_DB_FILE, PIPELINE_NAME, EXECUTION_NARRATIVE_FILE, LLM_SUMMARY_FILE,
 )
 from app.core.logger import get_logger
 from app.models.etl_execution import ETLExecution
@@ -31,9 +34,29 @@ def main() -> None:
     logger.info("Leyendo registros de perros...")
     dog_records = CSVReaderService.read_dogs_records(DOG_REGISTRATIONS_FILE)
 
+    correction_anomalies = []
+    logger.info("Intentando correccion de razas invalidas con LLM...")
+    try:
+        breed_correction_service = BreedCorrectionLLMService()
+        correction_anomalies = breed_correction_service.correct_invalid_breeds(dog_records, breed_rules)
+        logger.info(f"Correcciones de raza aplicadas por LLM: {len(correction_anomalies)}")
+    except Exception as exc:
+        logger.warning(f"No se pudo ejecutar la correccion de razas por LLM: {exc}")
+
     logger.info("Validando registros...")
     validator = ValidatorService()
-    anomalies = validator.validate_records(dog_records, breed_rules)
+    anomalies = correction_anomalies + validator.validate_records(dog_records, breed_rules)
+
+    semantic_anomalies = []
+    logger.info("Ejecutando validacion semantica asistida por LLM...")
+    try:
+        semantic_service = SemanticValidationLLMService()
+        semantic_anomalies = semantic_service.validate_records(dog_records, breed_rules)
+        logger.info(f"Inconsistencias semanticas detectadas por LLM: {len(semantic_anomalies)}")
+    except Exception as exc:
+        logger.warning(f"No se pudo ejecutar la validacion semantica por LLM: {exc}")
+
+    anomalies.extend(semantic_anomalies)
 
     logger.info("Calculando estado final por registro...")
     record_results = StatusService.build_record_results(dog_records, anomalies)
@@ -52,12 +75,20 @@ def main() -> None:
         processed_records=len(dog_records),
     )
 
+    logger.info("Generando resumen narrativo base...")
+    narrative_text = NarrativeService.build_narrative(summary, execution)
+    NarrativeService.save_narrative(narrative_text, EXECUTION_NARRATIVE_FILE)
+                                                   
+    logger.info("Generando resumen con LLM...")
+    llm_service = NarrativeLLMService()
+    llm_summary = llm_service.generate_narrative_summary(summary, anomalies)
+
     logger.info("Generando reporte de salida...")
     ReportGeneratorService.generate_anomalies_csv(anomalies, ANOMALIES_REPORT_FILE)
     ReportGeneratorService.generate_execution_summary(summary, EXECUTION_SUMMARY_FILE)
+    ReportGeneratorService.generate_llm_summary_json(llm_summary, LLM_SUMMARY_FILE)
 
-    narrative_text = NarrativeService.build_narrative(summary, execution)
-    NarrativeService.save_narrative(narrative_text, EXECUTION_NARRATIVE_FILE)
+
 
     logger.info("Cargando resultados en BD...")
     sqlite_loader = SQLiteLoaderService(SQLITE_DB_FILE)
@@ -81,6 +112,7 @@ def main() -> None:
     logger.info(f"Reporte CSV: {ANOMALIES_REPORT_FILE}")
     logger.info(f"Resumen JSON: {EXECUTION_SUMMARY_FILE}")
     logger.info(f"Resumen narrativo: {EXECUTION_NARRATIVE_FILE}")
+    logger.info(f"Resumen LLM: {LLM_SUMMARY_FILE}")
     logger.info(f"Base SQLite: {SQLITE_DB_FILE}")
 
 
