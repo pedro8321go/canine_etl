@@ -53,9 +53,14 @@ class SemanticValidationLLMService:
                 json_schema=LLM_SEMANTIC_VALIDATION_JSON_SCHEMA,
                 max_output_tokens=700,
             )
+            items = response.get("items", [])
+            if not isinstance(items, list):
+                raise ValueError("Respuesta invalida de LLM en validacion semantica: 'items' no es lista.")
 
             record_by_id = {record.dog_id: record for record in batch_records}
-            for item in response.get("items", []):
+            for item in items:
+                if not isinstance(item, dict):
+                    continue
                 if not bool(item.get("has_issue", False)):
                     continue
 

@@ -80,8 +80,17 @@ def main() -> None:
     NarrativeService.save_narrative(narrative_text, EXECUTION_NARRATIVE_FILE)
                                                    
     logger.info("Generando resumen con LLM...")
-    llm_service = NarrativeLLMService()
-    llm_summary = llm_service.generate_narrative_summary(summary, anomalies)
+    try:
+        llm_service = NarrativeLLMService()
+        llm_summary = llm_service.generate_narrative_summary(summary, anomalies)
+    except Exception as exc:
+        logger.warning(f"No se pudo generar el resumen con LLM: {exc}")
+        llm_summary = {
+            "executive_summary": "No disponible por error de LLM.",
+            "main_issues": [],
+            "recommendations": [],
+            "risk_assessment": "No disponible por error de LLM.",
+        }
 
     logger.info("Generando reporte de salida...")
     ReportGeneratorService.generate_anomalies_csv(anomalies, ANOMALIES_REPORT_FILE)
